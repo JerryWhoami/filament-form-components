@@ -1,0 +1,17 @@
+{
+  "name": "filament-form-components",
+  "version": "1.0.0",
+  "description": "Form components for filament.php",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "author": "JerryWhoami",
+  "license": "ISC",
+  "dependencies": {
+    "@awcodes/filament-plugin-purge": "^1.1.1",
+    "laravel-vite-plugin": "^0.7.8",
+    "vite": "^4.4.7"
+  }
+}
