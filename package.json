@@ -1,17 +1,25 @@
 {
   "name": "filament-form-components",
   "version": "1.0.0",
-  "description": "Form components for filament.php",
-  "main": "index.js",
+  "description": "Form components for filament php",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build"
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "production": "mix --production",
+    "purge": "filament-purge -i ./public/build/assets/app-5ef42bd6.css -o ./public/build/assets/app-5ef42bd6.css"
   },
   "author": "JerryWhoami",
-  "license": "ISC",
+  "license": "MIT",
+  "private": true,
   "dependencies": {
     "@awcodes/filament-plugin-purge": "^1.1.1",
-    "laravel-vite-plugin": "^0.7.8",
-    "vite": "^4.4.7"
+    "jsoneditor": "^9.10.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "laravel-mix": "^6.0.49",
+    "postcss": "^8.4.27",
+    "tailwindcss": "^3.3.3"
   }
 }

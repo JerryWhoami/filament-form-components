@@ -1,18 +1,14 @@
 {
   "name": "jerry-whoami/filament-form-components",
-  "description": "Package containing custom form components to be used within filament.php",
-  "autoload": {
-    "psr-4": {
-      "JerryWhoami\\FilamentFormComponents\\": "src/"
-    }
-  },
+  "description": "Custom Form Components for Filament",
+  "license": "MIT",
   "authors": [
     {
       "name": "JerryWhoami",
-      "email": "jerry.whoami@gmail.com"
+      "email": "jerry.whoami@gmail.com",
+      "role": "Owner"
     }
   ],
-  "minimum-stability": "dev",
   "require": {
     "php": "^8.0",
     "filament/filament": "^2.0",
@@ -22,11 +18,24 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Vendor\\JerryWhoami\\FilamentFormComponents"
+        "JerryWhoami\\FilamentFormComponents\\FilamentFormComponentsServiceProvider"
       ]
     }
   },
   "require-dev": {
-    "orchestra/testbench": "dev-develop"
-  }
+    "orchestra/testbench": "dev-develop",
+    "illuminate/filesystem": "^8.61"
+  },
+  "autoload": {
+    "psr-4": {
+      "JerryWhoami\\FilamentFormComponents\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "JerryWhoami\\FilamentFormComponents\\Tests\\": "tests/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }

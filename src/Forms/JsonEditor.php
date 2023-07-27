@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Forms\Components;
+namespace JerryWhoami\FilamentFormComponents\Forms;
 
 use Closure;
 use Filament\Forms\Components\Field;
@@ -8,7 +8,7 @@ use Filament\Forms\Components\Field;
 class JsonEditor extends Field
 {
   protected string $view = 'filament-form-components::json-editor';
-  protected int|Closure|null $height = 300;
+  protected int|Closure|null $height = null;
   protected array|Closure|null $modes = ['code', 'form', 'text', 'tree', 'view', 'preview'];
   protected bool $jsonFormatted = false;
 
