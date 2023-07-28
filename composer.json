@@ -23,8 +23,8 @@
     }
   },
   "require-dev": {
-    "orchestra/testbench": "dev-develop",
-    "illuminate/filesystem": "^8.61"
+    "orchestra/testbench": "^7.0",
+    "phpunit/phpunit": "^9.5"
   },
   "autoload": {
     "psr-4": {
