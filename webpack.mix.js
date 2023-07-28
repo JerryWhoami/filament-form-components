@@ -10,6 +10,7 @@ mix
     [
       "node_modules/jsoneditor/dist/jsoneditor.min.css",
       "node_modules/jsoneditor/dist/jsoneditor.min.js",
+      "node_modules/jsoneditor/dist/jsoneditor.map",
     ],
     "public/jsoneditor",
   )

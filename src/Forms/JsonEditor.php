@@ -26,9 +26,6 @@ class JsonEditor extends Field
     return $this;
   }
 
-  /**
-   * Is the model field casted to 'json'?
-   */
   public function isJson(bool $state = true): static
   {
     $this->jsonFormatted = $state;

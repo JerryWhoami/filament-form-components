@@ -6,7 +6,6 @@
         get formattedState() {
             return this.isJson ? this.state : JSON.parse(this.state)
         },
-        editorHeight: 0,
         setHeight() {
             const height = {{ $getHeight() ?? 0 }};
             $refs.editor.style['height'] = (height ? height : this.calcHeight()) + 'px';
@@ -57,14 +56,9 @@
                     })
                 }
             };
-            if (typeof json_editor !== 'undefined') {
-                json_editor = new JSONEditor($refs.editor, options);
-                json_editor.set(formattedState);
-            } else {
-                let json_editor = new JSONEditor($refs.editor, options);
-                json_editor.set(formattedState);
-            }
+            let json_editor = new JSONEditor($refs.editor, options);
+            json_editor.set(formattedState);
         })" x-cloak wire:ignore>
-        <div x-ref="editor" x-on:resize.window="setHeight()" class="w-full ace_editor"></div>
+        <div x-ref="editor" x-on:resize.window="setHeight()" class="w-full"></div>
     </div>
 </x-forms::field-wrapper>
