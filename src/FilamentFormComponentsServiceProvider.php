@@ -20,7 +20,7 @@ class FilamentFormComponentsServiceProvider extends PackageServiceProvider
       ->hasViews();
 
     $this->publishes([
-      __DIR__ . '/../node_modules/jsoneditor/dist/img/jsoneditor-icons.svg' => public_path('css/jerry-whoami/filament-form-components/img/jsoneditor-icons.svg'),
+      __DIR__ . '/../public/jsoneditor/img/jsoneditor-icons.svg' => public_path('css/jerry-whoami/filament-form-components/img/jsoneditor-icons.svg'),
     ], 'jsoneditor');
   }
 
@@ -28,8 +28,8 @@ class FilamentFormComponentsServiceProvider extends PackageServiceProvider
   {
     FilamentAsset::register(
       [
-        Css::make('jsoneditor', __DIR__ . '/../node_modules/jsoneditor/dist/jsoneditor.min.css'),
-        Js::make('jsoneditor', __DIR__ . '/../node_modules/jsoneditor/dist/jsoneditor.min.js'),
+        Css::make('jsoneditor', __DIR__ . '/../public/jsoneditor/jsoneditor.min.css'),
+        Js::make('jsoneditor', __DIR__ . '/../public/jsoneditor/jsoneditor.min.js'),
       ],
       package: 'jerry-whoami/filament-form-components'
     );
