@@ -2,26 +2,36 @@
 
 namespace JerryWhoami\FilamentFormComponents;
 
-use Filament\PluginServiceProvider;
+use Filament\Support\Assets\Css;
+use Filament\Support\Assets\Js;
+use Filament\Support\Facades\FilamentAsset;
 use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class FilamentFormComponentsServiceProvider extends PluginServiceProvider
+class FilamentFormComponentsServiceProvider extends PackageServiceProvider
 {
   public static string $name = 'filament-form-components';
-
-  protected array $scripts = [
-    'filament-form-components' => __DIR__ . '/../public/jsoneditor/jsoneditor.min.js',
-  ];
-
-  protected array $styles = [
-    'filament-form-components' => __DIR__ . '/../public/jsoneditor/jsoneditor.min.css',
-  ];
 
   public function configurePackage(Package $package): void
   {
     $package
-      ->name(self::$name)
+      ->name(static::$name)
       ->hasConfigFile()
       ->hasViews();
+
+    $this->publishes([
+      __DIR__ . '/../node_modules/jsoneditor/dist/img/jsoneditor-icons.svg' => public_path('css/jerry-whoami/filament-form-components/img/jsoneditor-icons.svg'),
+    ], 'jsoneditor');
+  }
+
+  public function packageBooted(): void
+  {
+    FilamentAsset::register(
+      [
+        Css::make('jsoneditor', __DIR__ . '/../node_modules/jsoneditor/dist/jsoneditor.min.css'),
+        Js::make('jsoneditor', __DIR__ . '/../node_modules/jsoneditor/dist/jsoneditor.min.js'),
+      ],
+      package: 'jerry-whoami/filament-form-components'
+    );
   }
 }

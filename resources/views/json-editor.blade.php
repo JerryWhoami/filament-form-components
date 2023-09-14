@@ -1,6 +1,16 @@
-<x-forms::field-wrapper :id="$getId()" :label="$getLabel()" :label-sr-only="$isLabelHidden()" :helper-text="$getHelperText()" :hint="$getHint()"
-    :hint-icon="$getHintIcon()" :required="$isRequired()" :state-path="$getStatePath()">
-    <div class="w-full" x-on:resize.window="window.elementHeightx = calcHeight()" x-data="{
+<x-dynamic-component
+  :component="$getFieldWrapperView()"
+  :field="$field"
+  :id="$getId()" 
+  :label="$getLabel()" 
+  :label-sr-only="$isLabelHidden()" 
+  :helper-text="$getHelperText()" 
+  :hint="$getHint()" 
+  :hint-icon="$getHintIcon()" 
+  :required="$isRequired()" 
+  :state-path="$getStatePath()"
+>
+  <div class="w-full" x-on:resize.window="window.elementHeightx = calcHeight()" x-data="{
         state: $wire.entangle('{{ $getStatePath() }}'),
         isJson: {{ json_encode($getJsonFormatted()) }},
         get formattedState() {
@@ -18,21 +28,21 @@
                 document.querySelector('.filament-forms-card-component'),
             ];
             const elements = [
-                document.querySelector('.filament-main-topbar')?.offsetHeight,
-                document.querySelector('.filament-header')?.offsetHeight,
-                document.querySelector('.filament-form-actions')?.offsetHeight,
-                document.querySelector('.filament-main-footer')?.offsetHeight,
+                document.querySelector('.fi-topbar')?.offsetHeight,
+                document.querySelector('.fi-header')?.offsetHeight,
+                document.querySelector('.fi-form-actions')?.offsetHeight,
+                document.querySelector('.fi-fo-field-wrp-label')?.offsetHeight,
             ];
     
             const elementsTotalHeight = elements.filter((x) => x).reduce((total, value) => total + value, 0);
             const totalPadding = formElements.filter((x) => x).reduce((total, value) => {
-                return parseFloat(window.getComputedStyle(value).getPropertyValue('padding-top')) * 2 + total
+              return parseFloat(
+                window.getComputedStyle(value).getPropertyValue('padding-top')) * 2 + total
             }, 0) + (elements.length * 24);
     
             return max - elementsTotalHeight - totalPadding;
         }
-    }"
-        x-init="$nextTick(() => {
+    }" x-init="$nextTick(() => {
             setHeight();
             const options = {
                 modes: {{ $getModes() }},
@@ -59,6 +69,6 @@
             let json_editor = new JSONEditor($refs.editor, options);
             json_editor.set(formattedState);
         })" x-cloak wire:ignore>
-        <div x-ref="editor" x-on:resize.window="setHeight()" class="w-full"></div>
-    </div>
-</x-forms::field-wrapper>
+    <div x-ref="editor" x-on:resize.window="setHeight()" class="w-full"></div>
+  </div>
+</x-dynamic-component>
