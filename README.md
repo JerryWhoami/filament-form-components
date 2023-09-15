@@ -5,7 +5,13 @@
 You can install the package via composer:
 
 ```bash
-composer require jerry-whoami/filament-form-components
+composer require jerrywhoami/filament-form-components
+```
+
+Publish the icons
+
+```bash
+php artisan vendor:publish --tag=jsoneditor
 ```
 
 ## License
